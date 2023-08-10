@@ -1,0 +1,25 @@
+
+#host{
+
+}
+
+#toolbar{
+  background-color:#f2f2f2;
+  display: block;
+
+}
+#table{
+width: 100%;
+
+
+}
+#button{
+display:  inline-block;
+margin: 5px 5px 5px 5px ;
+padding: 5px 5px 5px 5px;
+background-color: #701111 ;
+}
+#coluna{
+  position: fixed;
+  margin: 10px 10px 10px 10px;
+}

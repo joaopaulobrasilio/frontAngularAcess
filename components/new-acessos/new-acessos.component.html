@@ -1,0 +1,27 @@
+<mat-toolbar id="toolbar">
+
+</mat-toolbar>
+<br>
+<div>
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">CriarAcesso</legend>
+    <div class="form-row" [formGroup]="formulario">
+      <div class="form-group col-md-3">
+        <label for="inputLogin">Login</label>
+        <input type="email" class="form-control" formControlName="login">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputSenha">Senha</label>
+        <input type="password" class="form-control"formControlName="senha">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputDescricao">Descrição</label>
+        <input type="text" class="form-control"  formControlName="descricao">
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary"(click)="onSubmit()">Criar</button>
+    </div>
+</fieldset>
+</div>
+
