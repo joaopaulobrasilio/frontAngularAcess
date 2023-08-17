@@ -1,23 +1,25 @@
-import { tap } from 'rxjs';
 import { Component } from '@angular/core';
+
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { IAcesso } from 'src/app/interfaces/iacesso';
 import { AcessoService } from 'src/app/service/acesso.service';
 import { NewAcessoService } from 'src/app/service/new-acesso.service';
 
 @Component({
-  selector: 'app-new-acessos',
-  templateUrl: './new-acessos.component.html',
-  styleUrls: ['./new-acessos.component.css']
+  selector: 'app-editar-acessos',
+  templateUrl: './editar-acessos.component.html',
+  styleUrls: ['./editar-acessos.component.css']
 })
-export class NewAcessosComponent {
+export class EditarAcessosComponent {
+
 
   formulario!: FormGroup
+
 
   constructor(private formBuilder: FormBuilder,
     private service :AcessoService, private newacesso :NewAcessoService){
 
     }
-
   ngOnInit(){
 
     this.formulario = this.formBuilder.group({
@@ -27,17 +29,10 @@ export class NewAcessosComponent {
     });
 }
 
- onSubmit(){
-   this.service.postAcesso(this.formulario.value).pipe(
-    tap(
-      resp =>{
-        console.log("acesso criado-:>",resp)
-      }
-    )
-   )
- }
-
- voltarParaAcessos(){
+voltarParaAcessos(){
   this.newacesso.voltarParaListaDeAcessos();
  }
+
+
+
 }

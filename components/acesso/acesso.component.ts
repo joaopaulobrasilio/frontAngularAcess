@@ -34,4 +34,12 @@ export class AcessoComponent {
 
    }
 
+
+    criarNovoAcesso(){
+      this.acessoService.redirecionarParaNovoAcesso()
+    }
+
+    enviarParaEdicao(){
+      this.acessoService.redirecionarParaEdicao();
+    }
 }

@@ -1,6 +1,6 @@
 import { Observable, tap } from 'rxjs';
 import { ilogin } from './../interfaces/ilogin';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { iresptoken } from '../interfaces/iresptoken';
 import { Token } from '@angular/compiler';
@@ -14,7 +14,7 @@ export class LoginService {
 
   private storage!: Storage;
 
-constructor(private httpClient : HttpClient,
+constructor(private httpClient : HttpClient
   ) {
     this.storage = window.sessionStorage;
  }
@@ -22,7 +22,7 @@ constructor(private httpClient : HttpClient,
 
    get() {
 
-    return this.storage.getItem('Token')
+    return this.storage.getItem('token')
    }
 
    postLogin(login:ilogin): Observable<iresptoken>{
@@ -30,7 +30,7 @@ constructor(private httpClient : HttpClient,
   return this.httpClient.post<iresptoken>(`${this.API}/users/logar`,login).pipe(
     tap(
       resp =>{
-         this.storage.setItem('Token', resp.token)
+         this.storage.setItem('headers', resp.token)
           console.log(resp);
       }
     )
@@ -38,7 +38,10 @@ constructor(private httpClient : HttpClient,
    }
 
 
+   public isExpirationToken(token: string) {
 
+
+   }
 
 
 

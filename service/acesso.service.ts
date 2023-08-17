@@ -1,8 +1,9 @@
+import { IAcesso } from './../interfaces/iacesso';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, Observable, tap } from 'rxjs';
-import { IAcesso } from '../interfaces/iacesso';
-import { FormGroup } from '@angular/forms';
+
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { FormGroup } from '@angular/forms';
 export class AcessoService {
    private readonly API = 'http://localhost:4200/api'
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient,  private router : Router) { }
 
        list():Observable<any>{
         return this.httpClient.get(this.API+ '/acessos')
@@ -25,4 +26,15 @@ export class AcessoService {
 
       }
 
+
+
+
+      redirecionarParaNovoAcesso(){
+        this.router.navigate(['newacesso'])
+      }
+
+
+      redirecionarParaEdicao(){
+        this.router.navigate(['editarAcesso'])
+      }
 }

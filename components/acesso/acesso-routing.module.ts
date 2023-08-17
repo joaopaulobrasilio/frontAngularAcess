@@ -3,10 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AcessoComponent } from './acesso.component';
 import { NewAcessosComponent } from '../new-acessos/new-acessos.component';
+import { AuthGuardService } from 'src/app/auth-guard.service';
+import { EditarAcessosComponent } from '../editar-acessos/editar-acessos.component';
+
 
 const routes: Routes = [
-  {path: '', component: AcessoComponent},
-  {path:'newacesso', component: NewAcessosComponent}
+  {path: '', component: AcessoComponent,
+  canActivate:[AuthGuardService]},
+  {path:'newacesso', component: NewAcessosComponent,
+ canActivate: [AuthGuardService]},
+ {
+  path: 'editarAcesso/id', component: EditarAcessosComponent,
+  canActivate: [AuthGuardService]
+}
+
 ];
 
 @NgModule({

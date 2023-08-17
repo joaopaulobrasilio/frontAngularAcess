@@ -35,7 +35,7 @@
         <th mat-header-cell *matHeaderCellDef>Ações
         </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-mini-fab id="button">
+          <button mat-mini-fab id="button"(click)="enviarParaEdicao()">
             <mat-icon>edit</mat-icon>
           </button>
           <button mat-mini-fab id="button" class="del">
@@ -45,10 +45,11 @@
       </ng-container>
       <ng-container matColumnDef="novo">
         <th mat-header-cell *matHeaderCellDef>
-          <button mat-fab id="button">
+          <button mat-fab id="button" (click)="criarNovoAcesso()">
             <mat-icon>add</mat-icon>
           </button>
         </th>
+
         <td mat-cell *matCellDef="let element">
         </td>
       </ng-container>

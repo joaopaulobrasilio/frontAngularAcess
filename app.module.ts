@@ -1,4 +1,4 @@
-import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.interceptor';
+
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -14,6 +14,11 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { NewacessoModule } from './components/new-acessos/newacesso.module';
 import { LoginComponent } from './components/login/login.component';
 import { LoginModule } from './components/login/login.module';
+import { TokenInterceptor } from './token.interceptor';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { EditarAcessosComponent } from './components/editar-acessos/editar-acessos.component';
+import { EditarAcessoModule } from './components/editar-acessos/editar-acesso.module';
 
 
 
@@ -21,11 +26,7 @@ import { LoginModule } from './components/login/login.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
-
-
-
-
+    SpinnerComponent,
 
 
 
@@ -37,7 +38,9 @@ import { LoginModule } from './components/login/login.module';
     BrowserAnimationsModule,
     AcessoModule,
     NewacessoModule,
-    LoginModule
+    LoginModule,
+    EditarAcessoModule
+
 
 
   ],
@@ -49,9 +52,10 @@ import { LoginModule } from './components/login/login.module';
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorInterceptor,
+      useClass: TokenInterceptor,
       multi: true
     }
+
   ],
   bootstrap: [AppComponent]
 })
