@@ -1,6 +1,6 @@
 import { Observable, tap } from 'rxjs';
 import { ilogin } from './../interfaces/ilogin';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { iresptoken } from '../interfaces/iresptoken';
 import { Token } from '@angular/compiler';
@@ -38,10 +38,16 @@ constructor(private httpClient : HttpClient
    }
 
 
-   public isExpirationToken(token: string) {
 
+  loginError(value: any){
 
-   }
+    if(value instanceof HttpErrorResponse){
+      if(value.status === 404){
+        console.log("eeeeeeeeeeeee")
+      }
+    }
+
+  }
 
 
 

@@ -1,6 +1,6 @@
 export interface IAcesso {
 
-  _id : number;
+  id : number;
   login : string;
   senha : string;
   dataRegistro: string;

@@ -20,3 +20,13 @@ legend.scheduler-border {
   border-bottom: none;
 
 }
+#buttonSubmit{
+  background-color:#701111;
+  padding: auto;
+  margin:  5px;
+}
+#buttonReturn{
+  background-color:#701111;
+  padding: auto;
+  margin:  5px;
+}

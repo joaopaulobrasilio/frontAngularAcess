@@ -1,46 +1,57 @@
-import { HttpClient } from '@angular/common/http';
-import { finalize } from 'rxjs';
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { LoginService } from 'src/app/service/login.service';
-import { Router } from '@angular/router';
+import { Component } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { LoginService } from "src/app/service/login.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
+  formlogin!: FormGroup;
+  mostrarLabel!: boolean
 
-   formlogin! :FormGroup
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: LoginService,
+    private router: Router
+  ) {}
 
-    constructor(private  formBuilder : FormBuilder,
-      private service: LoginService, private router : Router){
-
-
-    }
-
-
-  ngOnInit(){
+  ngOnInit() {
     this.formlogin = this.formBuilder.group({
       login: [null],
-      password:[null]
-  })
-
+      password: [null],
+    });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.service.postLogin(this.formlogin.value).subscribe(
-      (resp)=>{
-        console.log(resp)
-        sessionStorage.setItem('token',resp.token)
-       this.router.navigate(['acessos'])
+      (resp) => {
+        sessionStorage.setItem("token", resp.token);
+        this.router.navigate(["acessos"]);
+      },
+      (error) => {
+        this.service.loginError(error);
+        this.mostraLabel();
+        setTimeout(() => {
+          this.esconderLabel();
+        }, 1000);
       }
-    )
+    );
 
-   console.log(this.formlogin.value)
+    console.log(this.formlogin.value);
   }
 
+  mostraLabel() {
+    this.mostrarLabel = true;
+  }
 
+  resetar() {
+    return this.formlogin.reset();
+  }
+
+  esconderLabel() {
+    this.mostrarLabel = false;
+  }
 }
-

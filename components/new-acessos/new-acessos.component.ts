@@ -1,43 +1,62 @@
-import { tap } from 'rxjs';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AcessoService } from 'src/app/service/acesso.service';
-import { NewAcessoService } from 'src/app/service/new-acesso.service';
+import { AlertmodelserviceService } from "./../../shared/alertmodelservice.service";
+import { BsModalRef } from "ngx-bootstrap/modal";
+
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NewAcessoService } from "src/app/service/new-acesso.service";
+
 
 @Component({
-  selector: 'app-new-acessos',
-  templateUrl: './new-acessos.component.html',
-  styleUrls: ['./new-acessos.component.css']
+  selector: "app-new-acessos",
+  templateUrl: "./new-acessos.component.html",
+  styleUrls: ["./new-acessos.component.css"],
 })
 export class NewAcessosComponent {
+  formulario!: FormGroup;
+  bsModalRef!: BsModalRef;
 
-  formulario!: FormGroup
+  constructor(
+    private formBuilder: FormBuilder,
+    private newacesso: NewAcessoService,
+    private alertService: AlertmodelserviceService
+  ) {}
 
-  constructor(private formBuilder: FormBuilder,
-    private service :AcessoService, private newacesso :NewAcessoService){
-
-    }
-
-  ngOnInit(){
-
+  ngOnInit() {
     this.formulario = this.formBuilder.group({
-      login: [null],
-      senha: [null],
-      descricao:[null]
+      login: [null, Validators.required, Validators.min(4), Validators.max(8)],
+      senha: [null, Validators.required],
+      descricao: [null],
     });
-}
+    this.resetar();
+  }
 
- onSubmit(){
-   this.service.postAcesso(this.formulario.value).pipe(
-    tap(
-      resp =>{
-        console.log("acesso criado-:>",resp)
+  onSubmit() {
+    this.newacesso.postAcesso(this.formulario.value).subscribe(() => {
+      success: {
+        this.handerSucess();
+
+        this.resetar();
       }
-    )
-   )
- }
+      error: () => {
+        this.handerError();
+        console.log();
+      };
+    });
+  }
 
- voltarParaAcessos(){
-  this.newacesso.voltarParaListaDeAcessos();
- }
+  handerError() {
+    this.alertService.showAlertDanger("Erro ao criar Acesso!");
+  }
+
+  handerSucess() {
+    this.alertService.showAlertSucess("Acesso criado com Sucesso!");
+  }
+
+  voltarParaAcessos() {
+    this.newacesso.voltarParaListaDeAcessos();
+  }
+
+  resetar() {
+    return this.formulario.reset();
+  }
 }

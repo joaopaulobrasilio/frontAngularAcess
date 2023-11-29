@@ -3,12 +3,12 @@
 </mat-toolbar>
 <br>
 <div>
-  <fieldset class="scheduler-border">
+  <fieldset class="scheduler-border" [formGroup]="formulario">
     <legend class="scheduler-border">CriarAcesso</legend>
     <div class="form-row" [formGroup]="formulario">
       <div class="form-group col-md-3">
         <label for="inputLogin">Login</label>
-        <input type="email" class="form-control" formControlName="login">
+        <input type="text" class="form-control" formControlName="login">
       </div>
       <div class="form-group col-md-3">
         <label for="inputSenha">Senha</label>
@@ -20,10 +20,10 @@
       </div>
     </div>
     <div>
-      <button mat-fab id="button" (click)="onSubmit()">
+      <button mat-fab id="buttonSubmit" (click)="onSubmit()">
         <mat-icon>send</mat-icon>
       </button>
-        <button mat-fab id="button" (click)="voltarParaAcessos()">
+        <button mat-fab id="buttonReturn" (click)="voltarParaAcessos()">
           <mat-icon> keyboard_return</mat-icon>
         </button>
 

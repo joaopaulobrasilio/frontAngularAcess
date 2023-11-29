@@ -20,3 +20,8 @@ legend.scheduler-border {
   border-bottom: none;
 
 }
+#button{
+  background-color:#701111;
+  padding: auto;
+  margin:  5px;
+}

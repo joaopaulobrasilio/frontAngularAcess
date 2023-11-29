@@ -1,9 +1,11 @@
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaderService {
+
 
   private loading: boolean = false;
   set: any;

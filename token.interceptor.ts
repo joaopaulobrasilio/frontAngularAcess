@@ -10,15 +10,16 @@ import {
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { LoginService } from './service/login.service';
 import { Router } from '@angular/router';
+import { AlertmodelserviceService } from './shared/alertmodelservice.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(public auth: LoginService, private router: Router) {}
+  constructor(public auth: LoginService, private router: Router, private alertaService: AlertmodelserviceService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // O código está assim
+
     request = request.clone({
       setHeaders: {
         Token: `${this.auth.get()}`
@@ -28,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(catchError(
       resp => {
-        console.log(resp)
+
         if (resp instanceof HttpErrorResponse){
           if (resp.status === 401) {
             sessionStorage.clear()
@@ -41,11 +42,10 @@ export class TokenInterceptor implements HttpInterceptor {
             }
           }
       }
-
-      return throwError(() => resp); //foi depreciado ? pronto kkkkk
-
-
+      return throwError(() => resp);
     }
     ))
   }
+
+
 }

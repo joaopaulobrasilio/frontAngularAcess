@@ -21,12 +21,26 @@
       </div>
     </div>
     <div>
-      <button mat-fab id="button">
-        <mat-icon>send</mat-icon>
+      <ng-container >
+        <button
+        id="button"
+        type="button"
+        class="btn btn-info"
+        (click)=" salvarAcessoEditado()"
+      >
+       Save
       </button>
-        <button mat-fab id="button" (click)="voltarParaAcessos()">
-          <mat-icon> keyboard_return</mat-icon>
-        </button>
+      <button
+      id="button"
+      type="button"
+      class="btn btn-info"
+      (click)="voltarParaAcessos()"
+    >
+      Send
+    </button>
+
+      </ng-container>
+
 
     </div>
 
