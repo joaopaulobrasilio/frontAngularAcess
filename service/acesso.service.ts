@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AcessoService {
+
   private readonly API = "http://localhost:4200/api";
 
   constructor(private httpClient: HttpClient, private router: Router) {}
@@ -40,9 +41,8 @@ export class AcessoService {
     this.router.navigate(["newacesso"]);
   }
 
-
-
   redirecionarParaEdicao(id: number) {
-    this.router.navigate([`/acessos/${id}/editarAcesso`]);
+  this.router.navigate([`/acessos/${id}/editarAcesso`])
   }
+
 }

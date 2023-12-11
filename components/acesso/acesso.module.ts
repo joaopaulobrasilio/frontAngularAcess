@@ -7,8 +7,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-
-
 import { AcessoRoutingModule } from './acesso-routing.module';
 import { AcessoComponent } from './acesso.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -16,10 +14,12 @@ import { MeupipePipe } from 'src/app/meupipe.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AcessoComponent,
     MeupipePipe
+
 
   ],
   imports: [

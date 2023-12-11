@@ -54,4 +54,10 @@ export class LoginComponent {
   esconderLabel() {
     this.mostrarLabel = false;
   }
+
+
+  navagarTelaRefinirSenha(){
+    return this.service.navegarParaTelaDeEnvioDeEmail();
+  }
+
 }

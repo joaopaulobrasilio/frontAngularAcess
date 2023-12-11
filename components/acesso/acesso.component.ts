@@ -22,6 +22,7 @@ export class AcessoComponent {
   botaoAberto = true;
   id!:number;
 
+
   displayedColumns = [
 
     "login",
@@ -45,17 +46,7 @@ export class AcessoComponent {
     this.pegarTodos();
   }
 
-  esconderSenha(id:number) {
 
-    this.password = "password";
-    this.botaoFechado = false;
-    this.botaoAberto = true;
-  }
-  mostrarSenha() {
-    this.password = "text";
-    this.botaoFechado = true;
-    this.botaoAberto = false;
-  }
 
   pegarTodos(event: any = { pageSize: 12, pageIndex: 0 }) {
     this.removerScroll();
