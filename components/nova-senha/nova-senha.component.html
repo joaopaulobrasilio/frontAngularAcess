@@ -1,1 +1,34 @@
-<p>nova-senha works!</p>
+<mat-toolbar id="toolbar">
+
+</mat-toolbar>
+<br>
+<div>
+  <fieldset class="scheduler-border" >
+    <legend class="scheduler-border">Criar Nova Senha  </legend>
+    <div class="form-row" [formGroup]="formulario">
+      <div class="form-group col-md-3">
+        <label for="inputSenha"> Nova Senha</label>
+        <input type="password" class="form-control"formControlName="novasenha">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputDescricao">Confirmar Senha</label>
+        <input type="password" class="form-control"  formControlName="confirmarsenha">
+      </div>
+    </div>
+    <div>
+      <button  id="buttonSubmit" class=" btn btn-success" (click)="onSubmit()">
+        Submit
+      </button>
+        <button  id="buttonReturn" class="btn btn-primary" (click)="voltarParaLogin()">
+          Return
+        </button>
+
+        <input class="form-check-input" type="checkbox" value="" id="checkboxMostrarSenha">
+        <label class="form-check-label" for="flexCheckIndeterminate">
+         Mostrar Senha
+        </label>
+    </div>
+
+</fieldset>
+</div>
+

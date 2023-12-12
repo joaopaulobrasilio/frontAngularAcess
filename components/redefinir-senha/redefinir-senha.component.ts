@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RedefinirSenhaService } from 'src/app/service/redefinir-senha.service';
+import { AlertmodelserviceService } from 'src/app/shared/alertmodelservice.service';
 
 @Component({
   selector: 'app-redefinir-senha',
@@ -13,7 +15,8 @@ export class RedefinirSenhaComponent {
 
 
  constructor(private formBiuler: FormBuilder ,
-   private service: RedefinirSenhaService){
+   private service: RedefinirSenhaService,
+private alert : AlertmodelserviceService, private router : Router){
 
  }
 
@@ -25,12 +28,33 @@ export class RedefinirSenhaComponent {
 
   onSubmit(){
     this.service.postEmail(this.formulario.value).subscribe(
-      (sucess)=>{
-        console.log(sucess);
-      }
+       { next : ()=>{
+        this.resetar();
+        this.handerSucess();
+       },error : (erro) =>{
+        console.log(erro);
+         this.handerError();
+       }
+       }
     )
    console.log(this.formulario.value);
   }
 
+  voltarParaLogin() {
+    this.router.navigate(['login']);
+  }
+
+
+  handerError() {
+    this.alert.showAlertDanger("Erro ao enviar email,verifique tem novamente!");
+  }
+
+  handerSucess() {
+    this.alert.showAlertSucess("Email enviado com Sucesso!");
+  }
+
+  resetar() {
+    return this.formulario.reset();
+  }
 
 }

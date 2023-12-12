@@ -14,12 +14,10 @@ export class RedefinirSenhaService {
 
   constructor(private httpClient :HttpClient) { }
 
-
-
-
     postEmail(email:string):Observable<iredefinirSenha>{
       return this.httpClient.post<iredefinirSenha>(`${this.API}/redefinirsenha/salvar`,email)
 
     }
+
 
 }

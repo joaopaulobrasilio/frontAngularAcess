@@ -13,7 +13,7 @@ const routes: Routes = [
       import("./components/acesso/acesso.module").then((m) => m.AcessoModule),
   },
   {
-    path: "redefinirSenha",
+    path: "redefinirsenha",
     loadChildren: () =>
       import("./components/redefinir-senha/redefinir-senha.module").then(
         (m) => m.RedefinirSenhaModule),

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RedefinirSenhaComponent } from './redefinir-senha.component';
 
 const routes : Routes = [
-{path: 'redefinirsenha', component: RedefinirSenhaComponent}
+{path: "", component: RedefinirSenhaComponent}
 ]
 
 @NgModule({
