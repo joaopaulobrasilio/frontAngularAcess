@@ -38,7 +38,7 @@ legend.scheduler-border {
   height: 35px
 
 }
-#checkboxMostrarSenha{
+.form-check-input{
   position: relative;
   margin-left: 10px;
   margin-right: 4px;

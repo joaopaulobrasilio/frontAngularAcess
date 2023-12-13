@@ -5,9 +5,11 @@
   <fieldset class="scheduler-border" >
     <legend class="scheduler-border">Redefinir Senha</legend>
     <div class="form-row" [formGroup]="formulario">
-      <div class="form-group col-md-3">
-        <label for="inputLogin">E-mail</label>
-        <input type="email" class="form-control" formControlName="email">
+      <div class="form-group col-md-6">
+        <mat-form-field appearance="outline" >
+        <mat-label for="inputLogin">E-mail</mat-label>
+        <input matInput type="email" formControlName="email" id="input">
+      </mat-form-field>
       </div>
     </div>
     <div>

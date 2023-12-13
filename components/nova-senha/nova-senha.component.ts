@@ -48,8 +48,6 @@ export class NovaSenhaComponent {
     )
 
   }
-
-
   handerError() {
     this.alert.showAlertDanger("Token Expirou Solicite novamente!");
   }
@@ -58,6 +56,11 @@ export class NovaSenhaComponent {
     this.alert.showAlertSucess("Email enviado com Sucesso!");
   }
 
+
+   transforPasswordIntext(){
+   const val = document.getElementById('form')
+
+   }
 
 
 }

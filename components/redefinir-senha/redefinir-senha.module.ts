@@ -4,6 +4,7 @@ import { RedefinirSenhaComponent } from './redefinir-senha.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedefinirRoutingModule } from './redefinir-routing.module';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -15,6 +16,7 @@ import { RedefinirRoutingModule } from './redefinir-routing.module';
 
   ],
   imports: [
+    MatInputModule,
     CommonModule,
     MatToolbarModule,
     ReactiveFormsModule,
